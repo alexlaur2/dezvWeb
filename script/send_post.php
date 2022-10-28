@@ -14,7 +14,7 @@ echo $raion;
 $name_location = $_POST['location'];
 $street = $_POST['strada'];
 $sql = "INSERT INTO locatie (id_raion,nume_localitate, strada)
-VALUES ('$raion','$name_location','$street')";
+        VALUES ('$raion','$name_location','$street')";
 $conn->query($sql);
 
 $contact = $_POST['contact'];
@@ -37,11 +37,11 @@ $descriere = $_POST['descriere'];
 
 $sql1 = "INSERT INTO infractiune (descriere,id_locatie,id_denuntator,id_statut,data) VALUES ('$descriere','$id_locatie','$id_denuntator',2,'$date')";
 if ($conn->query($sql1) === TRUE) {
-    echo "New record created successfully";
+//    dd('1');
+    header('Location: ../succes.php');
 } else {
     echo "Error: " . $sql1 . "<br>" . $conn->error;
 }
-header("Location: succes.php");
 
 
 $conn->close();

@@ -1,12 +1,5 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "report_inf";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    include 'DB_connect.php';
     $id = $_COOKIE["id_infractiune"];
     $id_denuntator = $_COOKIE["id_denuntator"];
     $id_locatie = $_COOKIE["id_locatie"];

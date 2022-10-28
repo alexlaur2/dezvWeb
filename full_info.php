@@ -34,11 +34,7 @@ if(isset($_GET["data"]) && !empty(trim($_GET["data"]))){
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="top_menu">
-    <a href="/">Home</a>
-    <a href="/check.php">Verificare</a>
-    <a href="/admin.php">Operator</a>
-</div>
+<?php include 'include/header.php'; ?>
 <div class="window" style="max-width: 70%">
     <table>
         <tr>
@@ -74,7 +70,7 @@ if(isset($_GET["data"]) && !empty(trim($_GET["data"]))){
     </table>
 </div>
 <div class="info-div window" style="max-width: 59%">
-        <form action="edit.php" method="post">
+        <form action="script/edit.php" method="post">
         <h1>Editare:</h1>
         <label for="raion">Raion:</label>
             <select name="raion" id="raion">

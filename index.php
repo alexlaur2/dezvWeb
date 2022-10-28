@@ -3,15 +3,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="top_menu">
-    <a href="/">Home</a>
-    <a href="/check.php">Verificare</a>
-    <a href="/admin.php">Operator</a>
-</div>
+<?php include 'include/header.php'; ?>
 <div class="info-div window">
     <h1>Raporteaza, nu fi indiferent</h1>
 </div>
-<form action="send_post.php" method="post">
+<form action="script/send_post.php" method="post">
     <div class="location window">
         <h1>Locatia infractiunii:</h1>
         <label for="raion">Raion:</label>

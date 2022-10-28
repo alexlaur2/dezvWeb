@@ -3,11 +3,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="top_menu">
-    <a href="/">Home</a>
-    <a href="/check.php">Verificare</a>
-    <a href="/admin.php">Operator</a>
-</div>
+<?php include 'include/header.php'; ?>
 <div class="window" style="max-width: 400px">
     <form action="show_date.php" method="post">
         <label for="date">Introdu data care o cautati</label>

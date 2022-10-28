@@ -15,11 +15,7 @@ $date = $_POST['date'];
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="top_menu">
-    <a href="/">Home</a>
-    <a href="/check.php">Verificare</a>
-    <a href="/admin.php">Admin</a>
-</div>
+<?php include 'include/header.php'; ?>
 <div class="search window" style="max-width: 24%">
     <h2 style="font-size: 20px; text-align: center">Cauta dupa</h2>
     <a href="search_raion.php">raion</a>

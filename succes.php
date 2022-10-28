@@ -14,11 +14,7 @@ $skey = $result['skey'];
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="top_menu">
-    <a href="/">Home</a>
-    <a href="/check.php">Verificare</a>
-    <a href="/admin.php">Operator</a>
-</div>
+<?php include 'include/header.php'; ?>
 <div class="info-div window">
     <h1>Infractiunea a fost raportata cu succes</h1>
 </div>
@@ -26,10 +22,10 @@ $skey = $result['skey'];
         <h1 style="font-size: 20px">Pentru a verifica statul raportului notati datele:</h1>
         <h2 style="font-size: 15px">Numele:<?php
             print $nume
-            ?></h2>
+            ?></h2><br>
         <h2 style="font-size: 15px">Cuvantul cheie:<?php
             print $skey
-            ?></h2></h2>
+            ?></h2>
         <div class="button">
             <a href="check.php">
                 <input type="submit" value="Verifica" class="btn">
