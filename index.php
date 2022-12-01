@@ -73,12 +73,13 @@
         <h2 style="color: red">*Cuvantul cheie va fi modificat la final pentru a garanta securitatea</h2>
     </div>
 
-
-
     <div class="button window">
         <input type="submit" value="Trimite" class="btn">
     </div>
 
+    <script>
+
+    </script>
 </form>
 </body>
 </html>

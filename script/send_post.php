@@ -8,13 +8,19 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
+$errors = [];
 $raion = $_POST['raion'];
-echo $raion;
+//echo $raion;
+if (empty($raion))
+    $errors['name'] = 'Indicați Raionul.';
 $name_location = $_POST['location'];
+if (empty($name_location))
+    $errors['location'] = 'Indicați Localitatea.';
 $street = $_POST['strada'];
-$sql = "INSERT INTO locatie (id_raion,nume_localitate, strada)
-        VALUES ('$raion','$name_location','$street')";
+if (empty($street))
+    $errors['street'] = 'Indicați Strada.';
+
+$sql = "INSERT INTO locatie (id_raion,nume_localitate, strada) VALUES ('$raion','$name_location','$street')";
 $conn->query($sql);
 
 $contact = $_POST['contact'];
