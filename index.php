@@ -1,13 +1,42 @@
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
+    <script src="https //ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#main-form").submit(function(event){
+                event.preventDefault();
+                var raion = $("#raion").val();
+                var localtion = $("#localtion").val();
+                var strada = $("#strada").val();
+                var descriere = $("#descriere").val();
+
+                $.ajax({
+                    url: "script/send_post.php",
+                    type: "POST",
+                    data: {
+                        raion: raion,
+                        location: localtion,
+                        strada: strada,
+                        descriere: descriere
+                        contact: $("#contact").val(),
+                        nume: $("#nume").val(),
+                        skey: $("#skey").val()
+                    },
+                    success: function(data){
+                        $("#result").html(data);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 <?php include 'include/header.php'; ?>
 <div class="info-div window">
     <h1>Raporteaza, nu fi indiferent</h1>
 </div>
-<form action="script/send_post.php" method="post">
+<form action="script/send_post.php" method="post" id="main-form">
     <div class="location window">
         <h1>Locatia infractiunii:</h1>
         <label for="raion">Raion:</label>
@@ -77,9 +106,54 @@
         <input type="submit" value="Trimite" class="btn">
     </div>
 
-    <script>
-
-    </script>
+<!--    <script>-->
+<!--        var formAjaxValidate = document.getElementById("main-form");-->
+<!--        var checkForm = function(e) {-->
+<!---->
+<!--            var form = e.target;-->
+<!---->
+<!--            if(this.raion.value === "") {-->
+<!--                alert("Va rugam sa selectati Raionul!");-->
+<!--                this.raion.focus();-->
+<!--                e.preventDefault();-->
+<!--                return;-->
+<!--            }-->
+<!--            if(this.location.value === "") {-->
+<!--                alert("Va rugam sa introduceti Localitatea!");-->
+<!--                this.location.focus();-->
+<!--                e.preventDefault();-->
+<!--                return;-->
+<!--            }-->
+<!--            if(this.strada.value === "") {-->
+<!--                alert("Va rugam sa introduceti Strada");-->
+<!--                this.strada.focus();-->
+<!--                e.preventDefault();-->
+<!--                return;-->
+<!--            }-->
+<!---->
+<!--            if(this.descriere.value === "") {-->
+<!--                alert("Va rugam sa introduceti Descrierea infractiunii!");-->
+<!--                this.descriere.focus();-->
+<!--                e.preventDefault();-->
+<!--                return;-->
+<!--            }-->
+<!---->
+<!--            if(this.descriere.value === "") {-->
+<!--                alert("Va rugam sa introduceti Descrierea infractiunii!");-->
+<!--                this.descriere.focus();-->
+<!--                e.preventDefault();-->
+<!--                return;-->
+<!--            }-->
+<!---->
+<!--            alert("Forma a fost completata cu succes...");-->
+<!--            e.preventDefault();-->
+<!--        }-->
+<!---->
+<!--        formAjaxValidate.addEventListener("submit", checkForm, false);-->
+<!---->
+<!---->
+<!---->
+<!--    </script>-->
 </form>
 </body>
 </html>
