@@ -11,14 +11,8 @@ if ($conn->connect_error) {
 $errors = [];
 $raion = $_POST['raion'];
 //echo $raion;
-if (empty($raion))
-    $errors['raion'] = 'Va rugam sa indicati Raionul!';
 $name_location = $_POST['location'];
-if (empty($name_location))
-    $errors['location'] = 'Va rugam sa indicati Localitatea!';
 $street = $_POST['strada'];
-if (empty($street))
-    $errors['street'] = 'Va rugam sa indicati Strada!';
 
 $contact = $_POST['contact'];
 $name = $_POST['nume'];
@@ -35,10 +29,7 @@ $id_denuntator = $result['id_denuntator'];
 
 $date = date('Y-m-d H:i:s');
 $descriere = $_POST['descriere'];
-if (empty($descriere))
-    $errors['descriere'] = 'Va rugam sa indicati Descrierea infractiunii!';
 
-if (count($errors) == 0) {
     $sql = "INSERT INTO locatie (id_raion,nume_localitate, strada) VALUES ('$raion','$name_location','$street')";
     $conn->query($sql);
     $sql = "INSERT INTO denuntator (contact,nume, skey) VALUES ('$contact','$name','$skey')";
@@ -51,8 +42,7 @@ if (count($errors) == 0) {
     } else {
         echo "Error: " . $sql1 . "<br>" . $conn->error;
     }
-} else {
-    header('Location: ../index.php');
-}
+
+
 
 $conn->close();

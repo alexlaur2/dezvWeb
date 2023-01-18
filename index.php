@@ -78,7 +78,7 @@
         </select>
         <label for="location">Localitate:</label>
         <input type="text" id="location" name="location">
-        <label for="strada">Strada:</label>
+        <br><label for="strada">Strada:</label>
         <input type="text" id="strada" name="strada">
     </div>
 
@@ -106,54 +106,80 @@
         <input type="submit" value="Trimite" class="btn">
     </div>
 
-<!--    <script>-->
-<!--        var formAjaxValidate = document.getElementById("main-form");-->
-<!--        var checkForm = function(e) {-->
-<!---->
-<!--            var form = e.target;-->
-<!---->
-<!--            if(this.raion.value === "") {-->
-<!--                alert("Va rugam sa selectati Raionul!");-->
-<!--                this.raion.focus();-->
-<!--                e.preventDefault();-->
-<!--                return;-->
-<!--            }-->
-<!--            if(this.location.value === "") {-->
-<!--                alert("Va rugam sa introduceti Localitatea!");-->
-<!--                this.location.focus();-->
-<!--                e.preventDefault();-->
-<!--                return;-->
-<!--            }-->
-<!--            if(this.strada.value === "") {-->
-<!--                alert("Va rugam sa introduceti Strada");-->
-<!--                this.strada.focus();-->
-<!--                e.preventDefault();-->
-<!--                return;-->
-<!--            }-->
-<!---->
-<!--            if(this.descriere.value === "") {-->
-<!--                alert("Va rugam sa introduceti Descrierea infractiunii!");-->
-<!--                this.descriere.focus();-->
-<!--                e.preventDefault();-->
-<!--                return;-->
-<!--            }-->
-<!---->
-<!--            if(this.descriere.value === "") {-->
-<!--                alert("Va rugam sa introduceti Descrierea infractiunii!");-->
-<!--                this.descriere.focus();-->
-<!--                e.preventDefault();-->
-<!--                return;-->
-<!--            }-->
-<!---->
-<!--            alert("Forma a fost completata cu succes...");-->
-<!--            e.preventDefault();-->
-<!--        }-->
-<!---->
-<!--        formAjaxValidate.addEventListener("submit", checkForm, false);-->
-<!---->
-<!---->
-<!---->
-<!--    </script>-->
+    <script>
+        var formAjaxValidate = document.getElementById("main-form");
+        var checkForm = function(e) {
+
+            var form = e.target;
+
+            if(this.raion.value === "") {
+                alert("Va rugam sa selectati Raionul!");
+                this.raion.focus();
+                e.preventDefault();
+                return;
+            }
+            if(this.location.value === "") {
+                alert("Va rugam sa introduceti Localitatea!");
+                this.location.focus();
+                e.preventDefault();
+                return;
+            }
+            if(this.strada.value === "") {
+                alert("Va rugam sa introduceti Strada");
+                this.strada.focus();
+                e.preventDefault();
+                return;
+            }
+
+            if(this.descriere.value === "") {
+                alert("Va rugam sa introduceti Descrierea infractiunii!");
+                this.descriere.focus();
+                e.preventDefault();
+                return;
+            }
+
+            if(this.descriere.value === "") {
+                alert("Va rugam sa introduceti Descrierea infractiunii!");
+                this.descriere.focus();
+                e.preventDefault();
+                return;
+            }
+
+            alert("Forma a fost completata cu succes...");
+            e.preventDefault();
+
+        }
+
+        formAjaxValidate.addEventListener("submit", checkForm, false);
+
+        $(document).ready(function(){
+            $("#main-form").submit(function(event){
+                event.preventDefault();
+                var raion = $("#raion").val();
+                var localtion = $("#localtion").val();
+                var strada = $("#strada").val();
+                var descriere = $("#descriere").val();
+
+                $.ajax({
+                    url: "script/send_post.php",
+                    type: "POST",
+                    data: {
+                        raion: raion,
+                        location: localtion,
+                        strada: strada,
+                        descriere: descriere
+                        contact: $("#contact").val(),
+                        nume: $("#nume").val(),
+                        skey: $("#skey").val()
+                    },
+                    success: function(data){
+                        $("#result").html(data);
+                    }
+                });
+            });
+        });
+
+    </script>
 </form>
 </body>
 </html>

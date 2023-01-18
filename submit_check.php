@@ -10,9 +10,8 @@ if ($conn->connect_error) {
 }
 $name = $_POST['nume'];
 $skey = $_POST['skey'];
-$id_denuntator = $conn->query("select locatie.nume_localitate, denuntator.nume,statut.nume_statut,data,descriere from infractiune join locatie on locatie.id_locatie = infractiune.id_locatie join denuntator on denuntator.id_denuntator = infractiune.id_denuntator join statut on statut.id_statut = infractiune.id_statut where
- denuntator.nume = '$name' AND denuntator.skey = '$skey'");
-$result = mysqli_fetch_array($id_denuntator);
+$run = $conn->query("select locatie.nume_localitate, denuntator.nume,statut.nume_statut, data, descriere from infractiune join locatie on locatie.id_locatie = infractiune.id_locatie join denuntator on denuntator.id_denuntator = infractiune.id_denuntator join statut on statut.id_statut = infractiune.id_statut where denuntator.skey = '".$skey."' and denuntator.nume = '".$name."';");
+$result = mysqli_fetch_array($run,MYSQLI_ASSOC);
 
 ?>
 <html>
